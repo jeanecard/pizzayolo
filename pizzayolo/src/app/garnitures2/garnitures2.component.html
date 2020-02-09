@@ -1,0 +1,51 @@
+<mat-card class="example-card">
+  <!-- ENTETE DU BLOC GARNITURE -->
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Garnitures</mat-card-title>
+    <mat-card-subtitle>Séléctionnez vos ingrédients</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+      <!-- BLOC TABLE DU BLOC GARNITURE -->
+    <!--1-  On définit ici la source des lignes de la mat-table. -->
+    <table mat-table [dataSource]="dataSource" t class="mat-elevation-z8">
+
+     <!-- 2- On définit ensuite les colonnes (matColumnDef). L'ordre n'a pas d'importance puisque ce sont les lignes qui "choisissent" leurs colonnes. -->
+
+      <!-- 2.1- Nom Column -->
+      <!-- Directive pour paramétrer la colonne Nom : Le Header (th) et les cellules (td) -->  
+      <!-- Detail de ng-container : https://angular.io/guide/structural-directives     -->
+      <!-- Detail de matColumnDef : https://material.angular.io/components/table/api -->
+      <!-- On ajoute la directive mat-sort-header pour permettre le tri par nom -->
+      <ng-container matColumnDef="nom-column-def">
+        <th mat-header-cell *matHeaderCellDef > Nom </th> <!-- Le Nom de la colonne qui sera affiché grace à la directive  matHeaderCellDef-->
+        <td mat-cell *matCellDef="let element"> {{element.Nom}} </td> <!-- Le contenu des cellules Nom qui sera affiché en utilisant le binding vers DataSource[i].Nom -->
+      </ng-container>
+
+      <!-- 2.2- Checkbox Column -->
+      <ng-container matColumnDef="select-column-def">
+        <th mat-header-cell *matHeaderCellDef>+/-</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox 
+          (change)="onChangeCheckBox($event, row)"
+          [checked]="isChecked(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- 3- Enfin, on définit les lignes -->
+
+      <!-- 3.1- Définition de la première ligne à afficher (mat-header-row).
+        on fournit à mat-header-row la liste des matColumnDef (via leur nom unique) à afficher. -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <!-- 3.2- Définition des autes lignes de la table (mat-row).
+      on fourni à  matRowDef :
+        - Les colonnes à afficher en fournissant une liste de matColumnDef (via leur nom unique). 
+          Ici on s'appuie à nouveau sur displayedColumns pou "matcher" avec le Header -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+    <div>{{selection.selected.length}}</div>
+  </mat-card-content>
+</mat-card>

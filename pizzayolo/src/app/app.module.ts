@@ -15,6 +15,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { Garnitures2Component } from './garnitures2/garnitures2.component';
+import { Phase2Component } from './phase2/phase2.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     Taille1Component,
     Resultat1Component,
     Phase1Component,
-    Sauce1Component
+    Sauce1Component,
+    Garnitures2Component,
+    Phase2Component
   ],
   imports: [
     BrowserModule,
