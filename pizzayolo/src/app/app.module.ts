@@ -17,6 +17,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { Garnitures2Component } from './garnitures2/garnitures2.component';
 import { Phase2Component } from './phase2/phase2.component';
+import { Phase3Component } from './phase3/phase3.component';
+import { Garnitures3Component } from './garnitures3/garnitures3.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { Phase2Component } from './phase2/phase2.component';
     Phase1Component,
     Sauce1Component,
     Garnitures2Component,
-    Phase2Component
+    Phase2Component,
+    Phase3Component,
+    Garnitures3Component
   ],
   imports: [
     BrowserModule,
